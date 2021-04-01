@@ -1,0 +1,69 @@
+{% extends "admin_account/report_base.html" %}
+{% block title %}Occurrence{% endblock title %}
+
+
+{% block content %}
+ <div class="col-md-12">
+ <div class="container" style="text-align: center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Detailed Maintenance Occurrence</h1>
+        <h2 class="display-4"> Maintenance Occurrence of minimum of {{ title }} </h2>
+      </div>
+    </div>
+</div>
+
+ <span><a href="{% url 'schedule' %}" class="btn btn-primary">Schedule new maintenance</a></span>
+
+<div class="col-md-6">
+      <div class="card card-body">
+          <form method="POST" action="{% url 'occurrence_prompt' %}" class="btn-block">
+            {% csrf_token %}
+            <input class="form-control me-2" type="number" name="no_of_occurrence" required autofocus
+                placeholder="Enter the minimum number of occurrence to start from">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+          </form>
+      </div>
+</div>
+        <div class="table-responsive">
+  <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+            <thead>
+                <th>No.</th>
+                <th>Box No.</th>
+                <th>Printer No.</th>
+                <th>Occurrence</th>
+                <th>Repair Status</th>
+                <th>Pickup Date</th>
+                <th>Problem Resolved</th>
+                <th>Fixed By</th>
+                <th>Date Fixed</th>
+{#                <th>Pickup Date</th>#}
+{#                <th>Update</th>#}
+{#                <th>Cancel</th>#}
+             </thead>
+   <tbody>
+   {% for schedule in schedules %}
+    <tr>
+    <td>{{ schedule.action_status }}</td>
+     <td>{{ schedule.box_number }}</td>
+     <td>{{ schedule.printer_number }}</td>
+     <td>{{ schedule.delivery_status }}</td>
+     <td>{{ schedule.repair_status }}</td>
+     <td>{{ schedule.pickup_date }}</td>
+     <td>{{ schedule.problem }}</td>
+     <td>{{ schedule.fixed_by }}</td>
+     <td>{{ schedule.date_repaired }}</td>
+{#     <td>{{ schedule.assigned_technicians }}</td>#}
+{#     <td>{{ schedule.created_at }}</td>#}
+{#     <td>{{ schedule.pickup_date }}</td>#}
+{#     <td><p data-placement="top" data-toggle="tooltip" title="Update Schedule"><a href="/update_maintenance/{{ schedule.id }}" class="btn btn-primary btn-xs" data-title="Update" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>#}
+{#     <td><p data-placement="top" data-toggle="tooltip" title="Cancel Schedule"><a href="/cancel_maintenance/{{ schedule.id }}" class="btn btn-danger btn-xs" data-title="Cancel" data-toggle="modal" data-target="#deactivate_user" ><span class="glyphicon glyphicon-remove"></span></a></p></td>#}
+{#    #}
+    </tr>
+   {% endfor %}
+   </tbody>
+
+  </table>
+        </div>
+    </div>
+{% endblock content %}

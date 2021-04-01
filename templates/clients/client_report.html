@@ -1,0 +1,63 @@
+{% extends "admin_account/report_base.html" %}
+
+{% block title %}Client report{% endblock title %}
+
+{% block content %}
+ <div class="col-md-12">
+  <div class="container" style="text-align: center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">REPAIR PRINTERS REPORT</h1>
+        <h2 class="display-4"> {{ title }} </h2>
+      </div>
+    </div>
+</div>
+
+     <div class="col-md-6">
+          <div class="card card-body">
+              <form action="{% url 'client_report'%}" method="POST">
+                  {% csrf_token %}
+                  <select name="key" autofocus>
+                     <option value="weekly">Weekly</option>
+                     <option value="daily">Daily</option>
+                     <option value="monthly">Monthly</option>
+                     <option value="quarter1">First Quarter</option>
+                     <option value="quarter2">Second Quarter</option>
+                     <option value="quarter3">Third Quarter</option>
+                     <option value="quarter4">Last Quarter</option>
+                     <option value="all">All</option>
+                     <option value="yearly">Yearly</option>
+                  </select>
+                  <br/>
+                  <h5>Start Date</h5>
+                  <input type="date" name="date" id="date" class="form-control" placeholder="Start Date" required>
+                  <button class="btn btn-outline-info" type="submit">Submit</button>
+               </form>
+          </div>
+      </div>
+    <div class="table-responsive">
+  <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+      <thead>
+      <th><input type="checkbox" id="checkall" /></th>
+      <th>Name</th>
+      <th>Printers Picked-up</th>
+      <th>Printers Fixed</th>
+      <th>Approved Cancelled Schedules</th>
+      <th>Pending Printers</th>
+      </thead>
+      <tbody>
+      {% for part in parts %}
+   <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+     <td>{{ part.client_name}}</td>
+     <td>{{ part.address }}</td>
+     <td>{{ part.rep}}</td>
+     <td>{{ part.approved_by }}</td>
+     <td>{{ part.requested_by}}</td>
+   </tr>
+   {% endfor %}
+  </tbody>
+     </table>
+   </div>
+ </div>
+{% endblock content %}

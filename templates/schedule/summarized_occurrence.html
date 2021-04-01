@@ -1,0 +1,48 @@
+{% extends "admin_account/report_base.html" %}
+{% block title %}Occurrence{% endblock title %}
+
+
+{% block content %}
+ <div class="col-md-12">
+ <div class="container" style="text-align: center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Summarized Maintenance Occurrence</h1>
+        <h2 class="display-4"> Maintenance Occurrence of minimum of {{ title }} </h2>
+      </div>
+    </div>
+</div>
+
+ <span><a href="{% url 'schedule' %}" class="btn btn-primary">Schedule new maintenance</a></span>
+
+<div class="col-md-6">
+      <div class="card card-body">
+          <form method="POST" action="{% url 'occurrence_prompt' %}" class="btn-block">
+            {% csrf_token %}
+            <input class="form-control me-2" type="number" name="no_of_occurrence" required autofocus
+                placeholder="Enter the minimum number of occurrence to start from">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+          </form>
+      </div>
+</div>
+        <div class="table-responsive">
+  <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+            <thead>
+                <th>No.</th>
+                <th>Printer No.</th>
+                <th>Occurrence</th>
+             </thead>
+   <tbody>
+   {% for schedule in schedules %}
+    <tr>
+    <td>{{ schedule.repair_status }}</td>
+     <td>{{ schedule.printer_number }}</td>
+     <td>{{ schedule.delivery_status }}</td>
+    </tr>
+   {% endfor %}
+   </tbody>
+
+  </table>
+        </div>
+    </div>
+{% endblock content %}

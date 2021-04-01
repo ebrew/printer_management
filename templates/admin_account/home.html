@@ -1,0 +1,124 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Printer Management - Dashboard</title>
+ <style>
+    img{
+        width: 60px;
+    }
+</style>
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
+  rel="stylesheet"
+/>
+   <!-- CSS only -->
+<!--<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css"> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard.css' %}">
+
+ </head>
+  {% include 'navbar.html' %}
+<body>
+  <div class="container middle">
+      <div class="row g-4">
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'user_management' %}"><img class="card-img-top" src="https://cabstartup.com/wp-content/uploads/2019/01/Increase-user-activity-for-taxi-app.jpg"></a>
+                  <p>
+                    <a href="{% url 'user_management' %}" style="text-decoration: none"><h4>USER MANAGEMENT</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'client_options' %}"><img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuyyAH0gZ9s9Od2sYr8TddD7ac9YkrBY14zw&usqp=CAU"></a>
+                  <p>
+                      <a href="{% url 'client_options' %}" style="text-decoration: none"><h4>CLIENT</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4 item">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'maintenance_options' %}"> <img class="card-img-top" src="https://media.noria.com/sites/Uploads/2018/12/20/77f079a4-5793-491e-b6f5-06cc808113a8_Images_ProactiveMaintenanceApproach_31035_1234x694_extra_large.jpeg"></a>
+                  <p>
+                      <a href="{% url 'maintenance_options' %}" style="text-decoration: none"><h4> MAINTENANCE </h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'reports' %}"><img class="card-img-top" src="https://blueocean.ca/wp-content/uploads/2016/08/How-to-get-actionable-insight.png"></a>
+                  <p>
+                  <a href="{% url 'reports' %}" style="text-decoration: none"><h4>REPORTING</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'printer_options' %}"> <img class="card-img-top" src="https://www.mospl.com.np/wp-content/uploads/2018/06/Entrust-Datacard-CD-800-Duplex-Printer-1024x576.jpg"></a>
+                  <p>
+                     <a href="{% url 'printer_options' %}" style="text-decoration: none"><h4>PRINTER</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="{% url 'waybill_options' %}"><img class="card-img-top" src="https://xattax.in/blog/wp-content/uploads/2019/10/ghg-1038x576.png">
+                  <p>
+                  <a href="{% url 'waybill_options' %}" style="text-decoration: none"><h4>WAYBILL GENERATION</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                   <a href="{% url 'pending_approvals' %}"><img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgW34mxKN_jfBCqK_hbjXcVCqnA99mjNKqzw&usqp=CAU">
+                  <p>
+                  <a href="{% url 'pending_approvals' %}" style="text-decoration: none"><h4>PENDING APPROVALS</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a <a href="{% url 'part_options' %}" ><img class="card-img-top" src="https://www.assetinfinity.com/blog/wp-content/uploads/2020/10/Spare-Parts-Inventory-Management.jpg">
+                  <p>
+                     <a <a href="{% url 'part_options' %}"  style="text-decoration: none"><h4>PARTS MANAGEMENT</h4></a>
+                  </p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="p-3 border bg-light" align="center">
+                  <a href="#"><img class="card-img-top" src="https://www.bbva.com/wp-content/uploads/2016/05/rating-1024x423.jpg">
+                  <p>
+                     <a href="#" style="text-decoration: none"><h4>USER RATINGS</h4></a>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  {% include 'footer.html' %}
+</body>
+</html>
